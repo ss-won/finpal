@@ -1,0 +1,120 @@
+extends layout
+
+block content
+ include includes/nav
+  // WRAPPER
+ #wrapper-content.home
+   // PAGE WRAPPER
+   #page-wrapper
+     // MAIN CONTENT
+     .main-content
+       // CONTENT
+       .content
+         // SLIDER BANNER
+         .section.slider-banner-03.background-opacity-2.set-height-top
+           .container
+             .slider-banner-wrapper
+               h3.sub-title.wow.fadeInUp(data-wow-delay='0.5s') This is a place of
+               h1.main-title.wow.fadeInUp(data-wow-delay='0.5s') Thinking &amp; creating
+               .group-button
+                 button.btn.btn-transition-3.wow.fadeInLeft(data-wow-delay='1.3s', data-wow-duration='1s')
+                   span Join to Services
+                 button.btn.btn-green-3.wow.fadeInRight#scroll(data-wow-delay='1.3s', data-wow-duration='1s')
+                   span Overview our Sevices
+         // CHOOSE COURSES
+         .section.section-padding.choose-course-2
+           .container
+             .group-title-index
+               h2.center-title CHOOSE MENU FOR GETTING DESCRIPTION
+               .bottom-title
+                 i.bottom-icon.fa.fa-info-circle
+             .choose-course-wrapper.row
+               .col-md-6.col-xs-12.box
+                 .item-course
+                   .icon-course
+                     i.icons-img.fa.fa-video-camera
+                   .info-course
+                     .name-course VR Education
+                     .info To teach what you do best <br/>To learn what you want from the best teacher in the world
+                   .hover-text
+                     .wrapper-hover-text
+                       .wrapper-hover-content
+                         a.title(href='/vrsys') To teach what you do best <br/>To learn what you want from the best teacher in the world
+                         .content
+                           | <br>This is a space where you can share videos related to the vr training program that is expected to be released in PinPal.
+                         .content
+                           | 핀팔에서 출시 예정인 vr 교육 프로그램 관련 영상들을 나눌 수 있는 공간입니다.
+               .col-md-6.col-xs-12.box
+                 .item-course
+                   .icon-course
+                     i.icons-img.fa.fa-cogs
+                   .info-course
+                     .name-course Algorithm
+                     .info Think smart and Execute Fast! <br>Algo creates new era!
+                   .hover-text
+                     .wrapper-hover-text
+                       .wrapper-hover-content
+                         a.title(href='/algorithm') Think smart and Execute Fast! <br>Algo creates new era!
+                         .content
+                           | <br>Introduce the sales algorithm developed by Finpal Korea itself. <br>It is currently being applied to the trading system.
+                         .content
+                           | 핀팔코리아 자체에서 개발한 매매 알고리즘에 대해 소개합니다. <br>현재 매매거래 시스템에 적용하고 있습니다.
+               .col-md-6.col-xs-12.box
+                 .item-course
+                   .icon-course
+                     i.icons-img.fa.fa-bar-chart
+                   .info-course
+                     .name-course Proprietary Trading
+                     .info Easy to Learn, Easy to Trade!
+                   .hover-text
+                     .wrapper-hover-text
+                       .wrapper-hover-content
+                         a.title(href='/prop') Easy to Learn, Easy to Trade!
+                         .content
+                           | <br>Provides a proprietary trading graph.
+                         .content
+                           | 핀팔그룹 자기 계정 거래(proprietary trading) 그래프를 제공합니다.
+               .col-md-6.col-xs-12.box
+                 .item-course#standard
+                   .icon-course
+                     i.icons-img.fa.fa-shopping-cart
+                   .info-course
+                     .name-course Shop
+                     .info Creation comes from what you need.<br> You hava an idea what you wnat to make? <br>Tell us! We will delivery it to you!
+                   .hover-text
+                     .wrapper-hover-text
+                       .wrapper-hover-content
+                         a.title(href='/shop') Creation comes from what you need.<br> You hava an idea what you wnat to make? <br>Tell us! We will delivery it to you!
+                         .content
+                           | <br>The service is currently being prepared.
+                         .content
+                           | 현재 서비스 준비중입니다.
+         // BUTTON BACK TO TOP
+         #back-top
+           a(href='#top')
+             i.fa.fa-angle-double-up
+         // LOADING
+         .body-2.loading
+            .dots-loader
+
+ include includes/foot
+ include includes/scripts
+ script.
+  $(function(){  
+    var offset = $(".choose-course-2").offset().top - $(".navbar-header").offset().top;
+    $('#scroll').on("click",function(){
+      $('body,html').animate({
+                scrollTop: offset
+            }, 700);
+            return false;
+  });
+  // move to page -> register
+  $("button.fadeInLeft").on("click",function(){
+    location.href = '/users/register';
+  })
+  
+  var stheight = $('#standard').height();
+  for(var i=0;i<3;i++)
+  $('item-course').find(i).height(stheight);
+
+  });

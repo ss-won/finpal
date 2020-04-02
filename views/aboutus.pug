@@ -1,0 +1,267 @@
+extends layout
+
+block content
+ include includes/nav
+  // WRAPPER
+ #wrapper-content.aboutus
+   // PAGE WRAPPER
+   #page-wrapper
+     // MAIN CONTENT
+     .main-content
+       // CONTENT
+       .content
+         .section.background-opacity.page-title.set-height-top
+           .container
+             .page-title-wrapper
+               // .page-title-content
+               h2.captions #{title}
+               ol.breadcrumb
+                 li
+                   a(href='/') Home
+                 li.active
+                   a(href='#') #{title}
+         .section.nav-subscribe
+           .container
+             .nav-subscribe-wrapper
+               .nav-subscribe-left
+                 p.subscribe-text
+                   | Subscribe 
+                   b.focus Finpal
+                   |  to learn new creative skill
+               .nav-subscribe-right
+                 a.btn.btn-green.btn-bold(href="users/register")
+                   span SUBSCRIBE NOW
+         // INTRO EDUGATE
+         .section.intro-edu
+           .container
+             .intro-edu-wrapper
+               .row
+                 .col-md-6
+                   img.img-fluid.intro-image.fadeInLeft.animated.wow(src='assets/images/intro-img2.jpeg', alt='',data-wow-delay='1.3s', data-wow-duration='1s')
+                 .col-md-6
+                   .row
+                     .intro-title.col-md-12.col-sm-12.col-xs-12
+                       | What is 
+                       b FINPAL
+                       |  ?
+                     .intro-content
+                       p.intro-head.col-md-12
+                         | Finpal is a leading developer specialized in Algorithm development / R&amp;D in financial market and education industry
+                       .col-md-10
+                         p
+                           i.fa.fa-check-circle
+                           |  We develope a comprehensive range of financial and educational system
+                         p
+                           i.fa.fa-check-circle
+                           |  We operate in 3 continents and 6 major exchanges for 24/7
+                         p
+                           i.fa.fa-check-circle
+                           |  Our secured and proved algotirhm trading system serves abroad range of global operations in financial market
+                         p
+                           i.fa.fa-check-circle
+                           |  Our creative education system connects students abroad and teachers in Canada via virtual system
+                         p
+                           i.fa.fa-check-circle
+                           |  Our creation centre integrates every creative idea to come true
+       // ---------------------------------------------------------------------------------------------------------------------------------------------
+       // PROGRESS BARS
+       .section.progress-bars.section-padding
+         .container
+           .progress-bars-content
+             .progress-bar-wrapper
+               h2.title-2 Finpal&apos;s HISTORY
+               // timeline 자리
+               .timeline
+                 .timeline__wrap
+                   .timeline__items
+                     .timeline__item
+                       .timeline__content
+                         h2 2016/05
+                         p Founded in Korea
+                     .timeline__item
+                       .timeline__content
+                         h2 2016/08
+                         p Candidate of KOREA Center for Creative Economy and Innovation
+                     .timeline__item
+                       .timeline__content
+                         h2 2016/11
+                         p Formed partnership with Fintech HUB Center of KB Financial Holdings
+                     .timeline__item
+                       .timeline__content
+                         h2 2017/05
+                         p Launched Algorithm Trading Machine
+                     .timeline__item
+                       .timeline__content
+                         h2 2018/10
+                         p Launched Tokyo Exchange Trading System
+                     .timeline__item
+                       .timeline__content
+                         h2 2018/11
+                         p Launched Japanese Market Trading Machine
+                     .timeline__item
+                       .timeline__content
+                         h2 2019/01
+                         p Formed strategic partnership with Gachon University
+                     .timeline__item
+                       .timeline__content
+                         h2 2019/04
+                         p Opened Canadian entity in Metro Vancouver
+                     
+               // timeline end
+       // --------------------------------------------------------------------------------------------------------------------------------------------
+       // BEST STAFF
+       .section.section-padding.staff-list.best-staff
+         .container
+           .group-title-index
+             h4.top-title organization chart
+             h2.center-title Our Team
+             .bottom-title
+               i.bottom-icon.fa.fa-object-group
+           .gallery-nav.col-md-12(style='text-align: center;')
+             ul#filters.nav.nav-tabs.edugate-tabs.button-group.filters-button-group(style='')
+               li.tab.active.kor
+                 a.text Korea
+               li.tab.active
+                 div
+                   i.fa.fa-arrows-h(aria-hidden='true')
+               li.ceo.active(style='line-height: 1.5em;')
+                 div CEO
+               li.tab.active
+                 div
+                   i.fa.fa-arrows-h(aria-hidden='true')
+               li.tab.active.can
+                 a.text Canada
+           // 내용
+           .row
+             .col-md-6
+               .row
+                 .col-md-6.col-sm-6.col-xs-12.our_content
+                   img(src='assets/images/finpal_korea_logo.png', alt='')
+                   h2 Korea Admin.
+                   h4 Financial Sector
+                   p Trading
+                   p programming
+                   h4 Educational Sector
+                   p Market Development
+                   p Sales
+                   p(style='border-top: 1px solid black') Floor 34.  Three IFC, 10, Gukjegeumyoung-ro, Youngdeungpo-gu, Seoul, Korea 07326
+                 .col-md-6.col-sm-6.col-xs-12.our_img
+                   img(src='https://mingtiandi.wpengine.com/wp-content/uploads/2016/11/IFC-Seoul.jpg', alt='')
+             .col-md-6
+               .row
+                 .col-md-6.col-sm-6.col-xs-12.our_content
+                   img(src='assets/images/finpal_tech_logo.png', alt='')
+                   h2 Canada Admin.
+                   h4 Financial Sector
+                   p R&amp;D
+                   p Network Development
+                   h4 Educational Sector
+                   p System Development
+                   p Sales
+                   p(style='border-top: 1px solid black') 1021 West Hastings Street, Suite #900, Vancouver BC, V6E 0C3
+                 .col-md-6.col-sm-6.col-xs-12.our_img
+                   img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/MNP_Tower_2015.jpg/240px-MNP_Tower_2015.jpg', alt='')
+       .section.section-padding.gallery-page.gallery-mansonry
+         .container
+           .gallery-nav
+             ul#filters.nav.nav-tabs.edugate-tabs.button-group.filters-button-group
+               li.tab.active(data-filter='*', data-category='all')
+                 .text all
+               li.tab(data-filter='.fin', data-category='campus')
+                 .text Financial Sector
+               li.tab(data-filter='.edu', data-category='education')
+                 .text Educational Sector
+           .grid
+             .grid-item.fin(data-category='fin')
+               a.link(href='assets/images/f1.png', data-fancybox='images')
+                 span.content
+                   span.content-title Financial Sector
+                   span.content-edu
+                     i.fa.fa-search-plus.icons
+                     span  Algorithm
+                 img.img-thumbnail(src='assets/images/f1.png', alt='')
+             .grid-item.fin(data-category='fin')
+               a.link(href='assets/images/f2.jpeg', data-fancybox='images')
+                 span.content
+                   span.content-title Financial Sector
+                   span.content-edu
+                     i.icons.fa.fa-search-plus
+                     span Photoghaphy Master
+                 img.img-thumbnail(src='assets/images/f2.jpeg', alt='')
+             .grid-item.fin(data-category='fin')
+               a.link(href='assets/images/f3.jpeg', data-fancybox='images')
+                 span.content
+                   span.content-title Financial Sector
+                   span.content-edu
+                     i.icons.fa.fa-search-plus
+                     span Photoghaphy Master
+                 img.img-thumbnail(src='assets/images/f3.jpeg', alt='', style='')
+             .grid-item.fin(data-category='fin')
+               a.link(href='assets/images/f4.jpeg', data-fancybox='images')
+                 span.content
+                   span.content-title Financial Sector
+                   span.content-edu
+                     i.icons.fa.fa-search-plus
+                     span Photoghaphy Master
+                 img.img-thumbnail(src='assets/images/f4.jpeg', alt='')
+             .grid-item.fin(data-category='fin')
+               a.link(href='assets/images/f5.jpeg', data-fancybox='images')
+                 span.content
+                   span.content-title Financial Sector
+                   span.content-edu
+                     i.icons.fa.fa-search-plus
+                     span Photoghaphy Master
+                 img.img-thumbnail(src='assets/images/f5.jpeg', alt='')
+             .grid-item.edu(data-category='edu')
+               a.link(href='assets/images/e4.png', data-fancybox='images')
+                 span.content
+                   span.content-title Educational Sector
+                   span.content-edu
+                     i.icons.fa.fa-search-plus
+                     span Photoghaphy Master
+                 img.img-thumbnail(src='assets/images/e4.png', alt='')
+             .grid-item.teacher.edu(data-category='edu')
+               a.link(href='assets/images/e1.png', data-fancybox='images')
+                 span.content
+                   span.content-title Educational Sector
+                   span.content-edu
+                     i.icons.fa.fa-search-plus
+                     span Photoghaphy Master
+                 img.img-thumbnail(src='assets/images/e1.png', alt='')
+             .grid-item.edu(data-category='edu')
+               a.link(href='assets/images/e3.jpeg', data-fancybox='images')
+                 span.content
+                   span.content-title Educational Sector
+                   span.content-edu
+                     i.icons.fa.fa-search-plus
+                     span Photoghaphy Master
+                 img.img-thumbnail(src='assets/images/e3.jpeg', alt='')
+             .grid-item.edu(data-category='edu')
+               a.link(href='assets/images/e2.jpeg', data-fancybox='images')
+                 span.content
+                   span.content-title Educational Sector
+                   span.content-edu
+                     i.icons.fa.fa-search-plus
+                     span Photoghaphy Master
+                 img.img-thumbnail(src='assets/images/e2.jpeg', alt='')
+ // SLIDER TALK ABOUT US
+ .section.background-opacity.slider-talk-about-us
+   .container
+     #people-talk.slider-talk-about-us-wrapper.carousel.slide(style='height: 500px')
+       .slider-talk-about-us-content.carousel-inner(role='listbox')
+         .peopel-item.item.active
+           h2(style='text-shadow: -5px -5px 2px #ef5734') &quot;Do Creative, Be Developing&quot;
+         //BUTTON BACK TO TOP
+         #back-top
+           a(href='#top')
+             i.fa.fa-angle-double-up
+         // LOADING
+         .body-2.loading
+            .dots-loader
+ include includes/foot
+ include includes/scripts
+ script(src='assets/libs/timeline-plugin/js/timeline.min.js')
+ script(src="assets/js/pages/homepage.js")
+ script(src="assets/js/pages/timeline.js")
+ script(src="assets/js/pages/gallery.js")
+ script(src="assets/libs/isotope/isotope.pkgd.min.js")

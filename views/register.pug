@@ -1,0 +1,69 @@
+extends layout
+
+block content
+    // HEADER
+    header
+      // not include
+      // WRAPPER
+      #wrapper-content
+        // PAGE WRAPPER
+        #page-wrapper
+          // MAIN CONTENT
+          .main-content
+            // CONTENT
+            .content
+              if !pass
+               div(class="alert alert-danger" role="alert" style="margin-bottom:0px;text-align:center")= message
+              .page-register.rlp
+                .container
+                  .register-wrapper.rlp-wrapper
+                    form(action="users/register", method="post").register-table.rlp-table
+                      a(href='/')
+                        img.login(src='assets/images/finpal_logo.png', alt='')
+                      .register-title.rlp-title create your account and join with us!
+                      .register-form.bg-w-form.rlp-form
+                        .row
+                          .col-md-12
+                            label.control-label.form-label(for='regemail')
+                              | email 
+                              span.highlight *
+                            input#regemail.form-control.form-input(type='email',name="email", placeholder='example@finpal.com' required)
+                            p(name="message" style="color:#F47C31;margin-top:5px")
+                            // p.help-block Warning !
+                          .col-md-6
+                            label.control-label.form-label(for='regname')
+                              | NAME 
+                              span.highlight *
+                            input#regname.form-control.form-input(type='text',name="name",placeholder='Please enter without special characters.' required)
+                            p(name="message" style="color:#F47C31;margin-top:5px")
+                            // p.help-block Warning !
+                          .col-md-6
+                            label.control-label.form-label(for='regemail')
+                              | nickname
+                              span.highlight *
+                            input#regemail.form-control.form-input(type='text',name="nname", placeholder='' required)
+                            p(name="message" style="color:#F47C31;margin-top:5px")
+                            // p.help-block Warning !
+                          .col-md-6
+                            label.control-label.form-label(for='regpassword')
+                              | password 
+                              span.highlight *
+                            input#regpassword.form-control.form-input(type='password', name="pwd", placeholder='8+ alphapet + number' required)
+                            p(name="message" style="color:#F47C31;margin-top:5px")
+                            // p.help-block Warning !
+                          .col-md-6
+                            label.control-label.form-label(for='reregpassword')
+                              | confirm password 
+                              span.highlight *
+                            input#reregpassword.form-control.form-input(type='password', name="pwdCheck",placeholder='the same password as you entered' required)
+                            p(name="message" style="color:#F47C31;margin-top:5px")
+                            // p.help-block Warning !
+                      .register-submit
+                        button.btn.btn-register.btn-green(type='submit', onclick="")
+                          span create account
+                      .col-md-12(style="margin-top:20px;")
+                        p if you already have account?
+                        a(href="/users/login") login
+
+    // LOADING SCRIPTS FOR PAGE
+    script(src='assets/js/pages/register.js')

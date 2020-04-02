@@ -1,0 +1,74 @@
+extends layout
+
+block content
+ include includes/nav
+   // WRAPPER
+ #wrapper-content.shop
+    // PAGE WRAPPER
+    #page-wrapper
+      // MAIN CONTENT
+      .main-content
+        // CONTENT
+        .content
+          .section.background-opacity.page-title.set-height-top
+            .container
+              .page-title-wrapper
+                // .page-title-content
+                h2.captions #{title}
+                ol.breadcrumb
+                  li
+                    a(href='/') Home
+                  li.active
+                    a(href='#') #{title}
+          //.section.nav-subscribe
+           .container
+             .nav-subscribe-wrapper
+               .nav-subscribe-left
+                 p.subscribe-text
+                   | Subscribe 
+                   b.focus Finpal
+                   |  to learn new creative skill
+               .nav-subscribe-right
+                 a.btn.btn-green.btn-bold(href="users/register")
+                   span SUBSCRIBE NOW
+          .section.section-padding.courses-detail
+            .container
+              .courses-detail-wrapper
+                .row
+                  .col-md-12.layout-left
+                    //h1.title(style="text-align:center") GETTING STARTED WITH DJANGO
+                    //.course-info.info(style="text-align:center")
+                      .author.item
+                        a(href='#')
+                          span By&nbsp;
+                          span Emma Watson
+                      .date-time.item
+                        a(href='#') 20 Aug 2015
+                    .course-video
+                      iframe.embed-responsive-item(src='https://www.youtube.com/embed/iaqoVMFJ2Fg', allowfullscreen='allowfullscreen')
+                      .clearfix
+                    //.course-des
+                      .course-des-title.underline Courses Info
+                      .course-des-content
+                        p
+                          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius ultricies metus. Donec ac ex porta libero venenatis sodales. Sed efficitur eget risus sed molestie. Nulla blandit bibendum metus ut sagittis. Etiam quis semper justo. Sed tristique facilisis felis ut tincidunt. Phasellus auctor convallis nisl ut accumsan. Suspendisse ullamcorper fermentum lectus, vel tincidunt ligula mollis sit amet. Aliquam at ante at elit efficitur tincidunt a quis neque. Donec ut pulvinar metus. Pellentesque lobortis volutpat eros sed sagittis. Nunc rutrum ex eu auctor tristique. Maecenas suscipit vestibulum nunc nec placerat. Phasellus blandit augue nunc, consequat consectetur augue placerat sed. Aenean fermentum scelerisque lectus, sit amet ultricies ex interdum bibendum. Quisque porttitor, enim maximus convallis gravida, dui
+                          | arcu lacinia libero, quis ornare nibh elit pharetra massa.
+                        p
+                          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius ultricies metus. Donec ac ex porta libero venenatis sodales. Sed efficitur eget risus sed molestie. Nulla blandit bibendum metus ut sagittis. Etiam quis semper justo. Sed tristique facilisis felis ut tincidunt. Phasellus auctor convallis nisl ut accumsan. Suspendisse ullamcorper fermentum lectus, vel tincidunt ligula mollis sit amet. Aliquam at ante at elit efficitur tincidunt a quis neque. Donec ut pulvinar metus. Pellentesque lobortis volutpat eros sed sagittis.
+                        blockquote
+                          .main-quote Video courses to build new skills from start to finish.
+                          .sub-quote
+                            | Lorem ipsum dolor sit amet, feugiat delicata liberavisse id cum, no quo maiorum intellegebat, liber regione eu sit. Mea cu case ludus integre.
+                          footer
+                            | Amber Ivy&nbsp;
+                            small (Grancie Company)
+
+ //BUTTON BACK TO TOP
+ #back-top
+   a(href='#top')
+     i.fa.fa-angle-double-up
+ // LOADING
+ .body-2.loading
+    .dots-loader
+ include includes/foot
+ include includes/scripts

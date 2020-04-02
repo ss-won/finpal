@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  // WRAPPER
+  #wrapper-content
+    // PAGE WRAPPER
+    #page-wrapper
+      // MAIN CONTENT
+      .main-content
+        // CONTENT
+        .content
+          .page-404
+            .container
+              .wrapper-404
+                .title-404
+                  p.signal Oops, This Page Could Not Be Found!
+                  p.sub
+                    | The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+                  p.warning 404
+                  h2= error.status
+                  pre= error.stack
+                  button.btn.btn-green-3(onclick="window.location.href='/'")
+                    span HOME
+    

@@ -1,0 +1,46 @@
+extends layout
+
+block content
+    //HEADER
+    header
+      // WRAPPER
+      #wrapper-content
+        // PAGE WRAPPER
+        #page-wrapper
+          // MAIN CONTENT
+          .main-content
+            // CONTENT
+            .content
+              if !pass
+                div(class="alert alert-danger" role="alert" style="margin-bottom:0px;text-align:center")= message
+              .page-login.rlp
+                .container
+                  .login-wrapper.rlp-wrapper
+                    form.login-table.rlp-table(action='users/login',method='post')
+                      a(href='/')
+                        img.login(src='assets/images/finpal_logo.png', alt='')
+                      .login-title.rlp-title login to your account
+                      .login-form.bg-w-form.rlp-form
+                        .row
+                          .col-md-12
+                            label.control-label.form-label(for='regemail')
+                              | email 
+                              span.highlight * 
+                            input#regemail.form-control.form-input(type='email',name='email', placeholder='' required)
+                            p(name="message" style="color:#F47C31;margin-top:5px")
+                            // p.help-block Warning !
+                          .col-md-12
+                            label.control-label.form-label(for='regpassword')
+                              | password 
+                              span.highlight *
+                            input#regpassword.form-control.form-input(type='password', name='pwd',placeholder='' required)
+                            p(name="message" style="color:#F47C31;margin-top:5px")
+                            // p.help-block Warning !
+                      .login-submit
+                        button.btn.btn-login.btn-green.btn-outline.my-button(type='submit', onclick="")
+                          span sign in
+                      div(style="margin-top:15px")
+                            a(style="margin-right:10px;",role="button" href="/users/register" class="") register
+                            a(style="margin-left:10px",role="button" class="") find account 
+    // LOADING SCRIPTS FOR PAGE
+    script(src='assets/js/pages/login.js')

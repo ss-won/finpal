@@ -1,0 +1,22 @@
+// JAVASCRIPT LIBS
+script(src='assets/libs/bootstrap-3.3.5/js/bootstrap.min.js')
+script(src='assets/libs/smooth-scroll/jquery-smoothscroll.js')
+script(src='assets/libs/owl-carousel-2.0/owl.carousel.min.js')
+script(src='assets/libs/appear/jquery.appear.js')
+script(src='assets/libs/count-to/jquery.countTo.js')
+script(src='assets/libs/wow-js/wow.min.js')
+script(src='assets/libs/selectbox/js/jquery.selectbox-0.2.min.js')
+script(src='assets/libs/fancybox/js/jquery.fancybox.js')
+script(src='assets/libs/fancybox/js/jquery.fancybox-buttons.js')
+// MAIN JS
+script(src='assets/js/main.js')
+// LOADING SCRIPTS FOR PAGE
+script.
+ $(function(){
+   var page = $("#wrapper-content").attr('class');
+   var nav = $(".menu").attr('id',function(i,val){
+     if(page==val){
+       $('.menu').eq(i).addClass('active');
+     }
+   })
+ })

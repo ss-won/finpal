@@ -1,0 +1,157 @@
+extends layout
+
+block content
+ include includes/nav
+ // WRAPPER
+ #wrapper-content.vrsys
+   // PAGE WRAPPER
+   #page-wrapper
+     // MAIN CONTENT
+     .main-content
+       // CONTENT
+       .content
+         .section.background-opacity.page-title.set-height-top
+           .container
+             .page-title-wrapper
+              .page-title-content
+               h2.captions all categories
+               ol.breadcrumb
+                 li
+                   a(href='/') Home
+                 li.active
+                   a(href='#')= title
+         .section
+           .search-input
+             .container
+               .search-input-wrapper
+                 form#search(action="", method="post")
+                    input.form-input(type='text', name='input' ,placeholder='',style="position:relative" value=`${input}`,required)
+                    button.form-submit.btn.btn-blue(type='submit' style="")
+                      span
+                        | search
+                        i.fa.fa-search
+                    .clearfix
+         #content.section.section-padding.list-categories
+           .container
+             .list-categories-wrapper
+               .top-content
+                 .result-output
+                   p.result-count.col-md-8
+                     |  Total 
+                     strong= count
+                     |  Contents
+                   .col-md-4.col-sm-12(style="text-align:right;")
+                    a.btn.btn-green(href="/vrsys/add") 
+                     span add
+               .list-categories-content.row
+                   .customs-row.ul
+                    each list in lists
+                      .col-md-4.col-sm-6.li
+                       .edugate-layout-3.card-deck(style="position:staic;")
+                        a(data-fancybox href=`https://youtu.be${list.link}&reg;autoplay=1&amp;loop=1`)
+                         .edugate-layout-3-wrapper.card
+                            img.img-responsive(src=`http://img.youtube.com/vi${list.link}/0.jpg`)
+                            .edugate-content.card-body
+                              p.title(href='/vrsys/')= list.title
+                              .description(style="margin:0px")= list.contents
+                              p(style="font-size:0.8em;color:darkgray;margin-bottom:0px") by #{list.writer_n}
+                              -if(list.daydiff>=1)
+                               p.date(style="font-size:0.8em;color:darkgray;") #{list.date}
+                              -else if(list.daydiff<1&&list.hour==0&&list.min==0)
+                               p.date(style="font-size:0.8em;color:darkgray;") in #{list.sec} seconds ago
+                              -else if(list.daydiff<1&&list.hour==0)
+                               p.date(style="font-size:0.8em;color:darkgray;") in #{list.min} minute ago
+                              -else
+                               p.date(style="font-size:0.8em;color:darkgray;") in #{list.hour} hours ago
+                            -if(login_success&&list.writer_n==nname||utype=='a')
+                              .btn-group(role="group" aria-label="Basic example" style="")
+                                button.ed.btn.btn-green.btn-secondary(id=`${list.id}`)
+                                    span
+                                     i(class="fa fa-pencil" aria-hidden="true")
+                                button.rm.btn.btn-green.btn-secondary(id=`${list.id}`)
+                                    span
+                                     i(class="fa fa-times" aria-hidden="true")
+                       
+                   
+
+ //BUTTON BACK TO TOP
+ #back-top
+   a(href='#top')
+     i.fa.fa-angle-double-up
+ // LOADING
+ .body-2.loading
+    .dots-loader
+ #foot.footer-top
+    .container
+      .footer-top-wrapper
+        .footer-top-left
+          p.footer-top-focus YOU CAN EXPERIENCE OUR VR-EDUCATION
+          p.footer-top-text you can download education app in Steam
+        .footer-top-right
+          button.btn.btn-blue.btn-bold#resume
+            span GET STARTED NOW 
+ include includes/foot
+ include includes/scripts
+ script.
+  $(function() {
+  $(".ed").on("click", function(e){
+    e.returnValue = false;
+    e.preventDefault();
+    location.href="/vrsys/edit/"+$(this).attr('id');
+  });
+
+  $(".rm").on("click",function(e){
+    event.preventDefault();
+    e.returnValue = false;
+    var id = $(this).attr('id');
+    
+      swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then(function(willDelete){
+            if (willDelete) {
+                $.ajax({
+                      url: "/vrsys/remove"+id,
+                      method: "get",
+                      error: function(xhr, status, error){swal(error);}
+                    })
+                    .done(function(d){
+                      swal(d).then(function(){
+                    location.href="/vrsys";
+                  }
+                  )
+                      
+                    });
+              }
+           else {
+            swal("Your post is safe!");
+          }
+        })
+  });
+
+  $('#search').on('submit',function(e){
+    //e.preventDefault();
+    //e.returnValue = false;
+    $(this).attr('action','/vrsys/search?input='+$('#search > input').val());
+    console.log($(this).attr('action'));
+  })
+
+  if($('#search').find('input').val()=="undefined"){
+    $(this).find('input').val("");
+  }
+
+  if($(window).width()<=768){
+    $('.select').addClass('hidden');
+  }
+  var form = document.createElement("input");
+  form.setAttribute('type','file');
+  $('#resume').on('click',function(e){
+    swal({
+      content: form 
+    });
+  })
+  })

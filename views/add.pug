@@ -1,0 +1,69 @@
+extends layout
+
+block content
+ include includes/nav
+   // WRAPPER
+ #wrapper-content.vrsys
+   // PAGE WRAPPER
+   #page-wrapper
+     // MAIN CONTENT
+     .main-content
+       .content
+        .section.set-height-top
+          -if(message)
+           .alert.alert-warning= message
+       // CONTENT
+       .content
+        .section
+         .container
+               h2(style="text-align:center;padding:30px 0px") Share Your Video!
+               form(action="/vrsys/add", method="post")
+                 .col-md-12.form-group
+                  label(for="title") TITLE
+                  input(type="text", name="title" class="form-control" maxlength="20" placeholder="Please enter no more than 20 characters")
+                 .col-md-12.form-group
+                  label(for="title") YOUTUBE LINK
+                  input(type="text", name="link" class="form-control" id="link" placeholder="https://youtu.be/videoID")
+                  .embed-responsive.embed-responsive-16by9.hidden(id="linkcheck" style="")
+                   iframe.embed-responsive-item.course-video(src="" width="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture")
+                 .col-md-12.form-group
+                  label(for="title") DESCRIPTION 
+                  #counter(style="text-align:right")
+                  textarea(name="desc",  class="form-control contents", placeholder="", maxlength="100" rows=3)
+                 div(style="text-align:center;margin:10px 0px")
+                  button#submit.btn(type="submit")
+                   span Add
+ // LOADING
+ .body-2.loading
+    .dots-loader
+ include includes/foot
+ include includes/scripts
+ script.
+  
+  $(function() {
+      //[출처:textarea 글자수 세기] https://zinee-world.tistory.com/237 
+      $('.contents').keyup(function (e){
+          var contents = $(this).val().length;
+          //keyup작동한 후에 textarea가 maxlength에 의해 글자를 자르므로, 
+          //미리 100이상이 나오지 않도록 현재글자수 표시를 미리 지워둔다.
+          if($('textarea').attr('maxlength')<contents){ contents -= 1;}
+          $('#counter').html(contents + '/100');
+      });
+      //keyup이 될때 counter가 보이므로 먼저 키업된 상태에서 시작
+      $('.contents').keyup();
+
+      // 영상확인
+      $('input#link').blur(function(e){
+        var link = $('input#link').val();
+        var linkmk = link.split('/');
+        if(link=="") return false;
+        
+        $('#linkcheck').removeClass('hidden');
+
+        $('iframe').attr("src","https://youtube.com/embed/"+linkmk[linkmk.length-1]);
+
+      })
+
+   });
+
+  

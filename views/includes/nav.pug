@@ -1,0 +1,46 @@
+header
+  .header-topbar.homepage-03
+    .container
+      .row
+        .col-md-5.topbar-left.text-left.info-text1
+        .col-md-2.logo-topbar.info-text2
+          a(href='/')
+            img(src='assets/images/finpal_logo.png', alt='')
+        .col-md-5.topbar-right.text-right.info-text3
+          .group-sign-in
+           -if(!login_success)
+            a.login(href='/users/login') login
+            a.register(href='/users/register') register
+           -else
+            a.login(href='/users') 
+             span 
+              b #{name}
+              | &nbsp;
+            a.register(href='/users/logout') logout
+          
+
+  .header-main.homepage-03
+    .container
+      .header-main-wrapper
+        .navbar-header
+          .logo.pull-left
+            a.header-logo(href='/')
+              img(src='assets/images/finpal_logo.png', alt='')
+          button.navbar-toggle.edugate-navbar(type='button', data-toggle='collapse', data-target='.navigation')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        nav.navigation.collapse.navbar-collapse
+          ul.nav-links.nav.navbar-nav
+            li.menu(id="home")
+              a.main-menu(href='/') Home
+            li.menu(id="aboutus")
+              a.main-menu(href='/aboutus') ABOUT US
+            li.menu(id="vrsys")
+              a.main-menu(href='/vrsys') VR EDUCATION
+            li.menu(id="algorithm")
+              a.main-menu(href='/algorithm') ALGORITHM
+            li.menu(id="prop")
+              a.main-menu(href='/prop') PROP TRADING
+            li.menu(id="shop")
+              a.main-menu(href='/shop') SHOP

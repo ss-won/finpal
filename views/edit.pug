@@ -1,0 +1,85 @@
+extends layout
+
+block content
+ include includes/nav
+   // WRAPPER
+ #wrapper-content.vrsys
+   // PAGE WRAPPER
+   #page-wrapper
+     // MAIN CONTENT
+     .main-content
+       .content
+        .section.set-height-top
+          -if(message)
+           .alert.alert-warning= message
+       // CONTENT
+       .content
+        .section
+         .container
+               h2(style="text-align:center;padding:30px 0px") Share Your Video!
+               form(id=`${edit.id}`)
+                 .col-md-12.form-group
+                  label(for="title") TITLE
+                  input(type="text", name="title" class="form-control" maxlength="20" placeholder="Please enter no more than 20 characters" value=`${edit.title}`)
+                 .col-md-12.form-group
+                  label(for="title") YOUTUBE LINK
+                  input(type="text", name="link" class="form-control" id="link" placeholder="https://youtu.be/videoID" value=`https://youtu.be${edit.link}`)
+                  .embed-responsive.embed-responsive-16by9(id="linkcheck" style="")
+                   iframe.embed-responsive-item.course-video(src=`https://youtube.com/embed/${edit.link}?controls=0` width="" allow="autoplay; encrypted-media; gyroscope; picture-in-picture")
+                 .col-md-12.form-group
+                  label(for="title") DESCRIPTION 
+                  #counter(style="text-align:right")
+                  textarea(name="desc",  class="form-control contents", placeholder="", maxlength="100" rows=3)= edit.contents
+                 div(style="text-align:center;margin:10px 0px")
+                  button.btn#submit
+                   span Edit
+ // LOADING
+ .body-2.loading
+    .dots-loader
+ include includes/foot
+ include includes/scripts
+ script.
+  $(function() {
+      //[출처:textarea 글자수 세기] https://zinee-world.tistory.com/237 
+      $('.contents').keyup(function(e){
+          var contents = $(this).val().length;
+          //keyup작동한 후에 textarea가 maxlength에 의해 글자를 자르므로, 
+          //미리 100이상이 나오지 않도록 현재글자수 표시를 미리 지워둔다.
+          if($('textarea').attr('maxlength')<contents){ contents -= 1;}
+          $('#counter').html(contents + '/100');
+      });
+      $('.contents').keyup();
+      // 영상확인
+      $('input#link').blur(function(e){
+        var link = $('input#link').val();
+        var linkmk = link.split('/');
+        if(link=="") return false;
+        
+        $('#linkcheck').removeClass('hidden');
+
+        $('iframe').attr("src","https://youtube.com/embed/"+linkmk[linkmk.length-1]);
+
+      })
+      $('form').on('submit',function(e){
+        e.returnValue = false;
+        e.preventDefault();
+        var id = $('form').attr('id');
+        var t = $("input[name='title']").val();
+        var l = $("input[name='link'").val();
+        var d = $("textarea").val();
+
+         $.ajax({
+                url: "/vrsys/edit/"+id,
+                method: "post",
+                data:{title:t,link:l,desc:d},
+                error: function(xhr, status, error){swal(error);}
+                }).done(function(d){
+                  swal(d).then(function(){
+                    location.href="/vrsys";
+                  }
+                  );
+                })
+      })
+      
+
+   });
