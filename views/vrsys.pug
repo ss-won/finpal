@@ -46,7 +46,7 @@ block content
                .list-categories-content.row
                    .customs-row.ul
                     each list in lists
-                      .col-md-4.col-sm-6.li
+                      .col-md-4.col-sm-6.li(id=`${list.id}`)
                        .edugate-layout-3.card-deck(style="position:staic;")
                         a(data-fancybox href=`https://youtu.be${list.link}&reg;autoplay=1&amp;loop=1`)
                          .edugate-layout-3-wrapper.card
@@ -65,10 +65,10 @@ block content
                                p.date(style="font-size:0.8em;color:darkgray;") in #{list.hour} hours ago
                             -if(login_success&&list.writer_n==nname||utype=='a')
                               .btn-group(role="group" aria-label="Basic example" style="")
-                                button.ed.btn.btn-green.btn-secondary(id=`${list.id}`)
+                                button.ed.btn.btn-green.btn-secondary(id="ed"+`${list.id}`)
                                     span
                                      i(class="fa fa-pencil" aria-hidden="true")
-                                button.rm.btn.btn-green.btn-secondary(id=`${list.id}`)
+                                button.rm.btn.btn-green.btn-secondary(id="rm"+`${list.id}`)
                                     span
                                      i(class="fa fa-times" aria-hidden="true")
                        
@@ -94,43 +94,10 @@ block content
  include includes/scripts
  script.
   $(function() {
-  $(".ed").on("click", function(e){
+  $(".ed"+`${list.id}`).on("click", function(e){
     e.returnValue = false;
     e.preventDefault();
     location.href="/vrsys/edit/"+$(this).attr('id');
-  });
-
-  $(".rm").on("click",function(e){
-    event.preventDefault();
-    e.returnValue = false;
-    var id = $(this).attr('id');
-    
-      swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover!",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-        })
-        .then(function(willDelete){
-            if (willDelete) {
-                $.ajax({
-                      url: "/vrsys/remove"+id,
-                      method: "get",
-                      error: function(xhr, status, error){swal(error);}
-                    })
-                    .done(function(d){
-                      swal(d).then(function(){
-                    location.href="/vrsys";
-                  }
-                  )
-                      
-                    });
-              }
-           else {
-            swal("Your post is safe!");
-          }
-        })
   });
 
   $('#search').on('submit',function(e){
