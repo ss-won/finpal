@@ -34,10 +34,10 @@ for (let element of rmbtns) {
 }
 
 // fetch구문을 통한 비동기통신 구현
-const getrmData = (id) => {
+async function getrmData(id) {
     let rmid = document.getElementById(id);
 
-    fetch("/vrsys/remove" + id)
+    await fetch("/vrsys/remove" + id)
         .then(res => res.json())
         .then(resJson => {
             swal(resJson);
