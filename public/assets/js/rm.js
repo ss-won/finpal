@@ -2,14 +2,14 @@ let rmbtns = document.getElementsByClassName('rm');
 let perid;
 
 //Buttion click event단에 실행될 콜백 함수
-function removeData(event) {
+async function removeData(event) {
     'use strict';
     perid = this.id;
     let id = perid.replace("rm", "");
     event.preventDefault();
     event.returnValue = false;
     try {
-        swal({
+        await swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover!",
             icon: "warning",
@@ -36,11 +36,14 @@ for (let element of rmbtns) {
 // fetch구문을 통한 비동기통신 구현
 async function getrmData(id) {
     let rmid = document.getElementById(id);
-
-    await fetch("/vrsys/remove" + id)
-        .then(res => res.json())
-        .then(resJson => {
-            swal(resJson);
-            rmid.remove();
-        });
+    let res, json;
+    try{
+        res = await fetch("/vrsys/remove" + id);
+        json = res.json();
+        swal(json);
+    }
+    catch(err){
+        console.log(err);
+    }
+    rmid.remove();
 }
